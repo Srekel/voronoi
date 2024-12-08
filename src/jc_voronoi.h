@@ -45,6 +45,8 @@ extern "C" {
     #define JCV_EDGE_INTERSECT_THRESHOLD 1.0e-10F
 #endif
 
+// Also see: JCV_DISABLE_STRUCT_PACKING
+
 typedef JCV_REAL_TYPE jcv_real;
 
 typedef struct jcv_point_           jcv_point;
@@ -113,7 +115,9 @@ extern int jcv_boxshape_clip(const jcv_clipper* clipper, jcv_edge* e);
 extern void jcv_boxshape_fillgaps(const jcv_clipper* clipper, jcv_context_internal* allocator, jcv_site* s);
 
 
+#ifndef JCV_DISABLE_STRUCT_PACKING
 #pragma pack(push, 1)
+#endif
 
 struct jcv_point_
 {
@@ -185,7 +189,9 @@ struct jcv_diagram_
     jcv_point               max;
 };
 
+#ifndef JCV_DISABLE_STRUCT_PACKING
 #pragma pack(pop)
+#endif
 
 #ifdef __cplusplus
 }
@@ -337,7 +343,9 @@ static inline jcv_real jcv_point_dist( const jcv_point* pt1, const jcv_point* pt
 
 // Structs
 
+#ifndef JCV_DISABLE_STRUCT_PACKING
 #pragma pack(push, 1)
+#endif
 
 typedef struct jcv_halfedge_
 {
@@ -397,7 +405,9 @@ struct jcv_context_internal_
     jcv_rect            rect;
 };
 
+#ifndef JCV_DISABLE_STRUCT_PACKING
 #pragma pack(pop)
+#endif
 
 void jcv_diagram_free( jcv_diagram* d )
 {
